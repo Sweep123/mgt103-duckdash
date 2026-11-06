@@ -6,57 +6,60 @@
 <title>DuckDash · Meal Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="planner">
 
 <main>
-<section class="page active">
+<section class="page">
   <div class="wrap">
     <div class="page-head">
-      <div><h1>Meal Planner</h1><p>Drag recipes into your days. Your grocery list builds itself.</p></div>
+      <div>
+        <h1>Your next <span class="squiggle">three days</span></h1>
+        <p>Planned around what's already in your fridge. Spinach goes first.</p>
+      </div>
       <div class="planner-tools">
         <div class="week-nav">
-          <button class="icon-btn" id="prevDays" aria-label="Previous 3 days"><svg class="icon"><use href="#i-left"/></svg></button>
+          <button class="icon-btn" id="prevDays" aria-label="Previous 3 days"><i data-lucide="chevron-left"></i></button>
           <span class="range-label" id="rangeLabel"></span>
-          <button class="icon-btn" id="nextDays" aria-label="Next 3 days"><svg class="icon"><use href="#i-right"/></svg></button>
+          <button class="icon-btn" id="nextDays" aria-label="Next 3 days"><i data-lucide="chevron-right"></i></button>
         </div>
         <button class="chip" id="todayBtn">Today</button>
-        <button class="btn" id="openCal"><svg class="icon"><use href="#i-cal"/></svg> Calendar view</button>
+        <button class="btn" id="openCal"><i data-lucide="calendar-days"></i> Whole week</button>
       </div>
     </div>
     <div class="mp">
       <div class="card cal-wrap"><div class="cal cal3" id="cal"></div></div>
       <div class="side">
         <div class="card panel">
-          <div class="panel-head"><h3><svg class="icon"><use href="#i-cart"/></svg> Grocery list</h3><a href="#">Share</a></div>
+          <div class="panel-head"><h3><i data-lucide="shopping-basket"></i> Shopping list</h3><a href="#">Text it to me</a></div>
           <div class="gl-sub">Produce</div>
           <ul class="glist">
-            <li><input type="checkbox" id="g1"><label for="g1">Bell peppers</label><span class="q">3</span></li>
-            <li><input type="checkbox" id="g2"><label for="g2">Yellow onions</label><span class="q">2</span></li>
-            <li class="done"><input type="checkbox" id="g3" checked><label for="g3">Bananas</label><span class="q">1 bunch</span></li>
+            <li><input type="checkbox" id="g1"><label for="g1">Bell peppers</label><span class="q">3 · $2.37</span></li>
+            <li><input type="checkbox" id="g2"><label for="g2">Yellow onions</label><span class="q">2 · $1.18</span></li>
+            <li class="done"><input type="checkbox" id="g3" checked><label for="g3">Bananas</label><span class="q">from split</span></li>
           </ul>
-          <div class="gl-sub">Protein &amp; dairy</div>
+          <div class="gl-sub">Meat, eggs, dairy</div>
           <ul class="glist">
-            <li><input type="checkbox" id="g4"><label for="g4">Chicken thighs</label><span class="q">2 lb</span></li>
-            <li><input type="checkbox" id="g5"><label for="g5">Greek yogurt</label><span class="q">32 oz</span></li>
-            <li><input type="checkbox" id="g6"><label for="g6">Shredded cheese</label><span class="q">8 oz</span></li>
+            <li class="done"><input type="checkbox" id="g4" checked><label for="g4">Chicken thighs</label><span class="q">from split</span></li>
+            <li><input type="checkbox" id="g5"><label for="g5">Greek yogurt</label><span class="q">32 oz · $5.49</span></li>
+            <li><input type="checkbox" id="g6"><label for="g6">Cheddar, block</label><span class="q">8 oz · $3.39</span></li>
           </ul>
           <div class="gl-sub">Pantry</div>
           <ul class="glist">
-            <li><input type="checkbox" id="g7"><label for="g7">Black beans</label><span class="q">2 cans</span></li>
-            <li><input type="checkbox" id="g8"><label for="g8">Tortillas</label><span class="q">1 pack</span></li>
+            <li><input type="checkbox" id="g7"><label for="g7">Black beans</label><span class="q">2 cans · $1.98</span></li>
+            <li><input type="checkbox" id="g8"><label for="g8">Flour tortillas</label><span class="q">10 ct · $2.49</span></li>
           </ul>
-          <div class="total"><span>Est. total</span><span>$27.40 <span class="badge" style="margin-left:6px">−$9 via splits</span></span></div>
+          <div class="total"><span>About $16.90 at ShopRite</span><span class="badge">Splits saved you $4.10</span></div>
         </div>
         <div class="card panel">
-          <div class="panel-head"><h3><svg class="icon" style="color:var(--amber)"><use href="#i-alert"/></svg> Use soon</h3><a href="recipes.html">Find recipes</a></div>
-          <ul class="glist soon">
-            <li><span class="e">🥬</span><div><b>Spinach</b><small>Half bag left</small></div><span class="days r">1 day</span></li>
-            <li><span class="e">🍗</span><div><b>Chicken breast</b><small>From rice &amp; chicken split</small></div><span class="days a">2 days</span></li>
-            <li><span class="e">🥛</span><div><b>Milk</b><small>~2 cups left</small></div><span class="days a">3 days</span></li>
-            <li><span class="e">🍅</span><div><b>Cherry tomatoes</b><small>1 pint</small></div><span class="days g">5 days</span></li>
+          <div class="panel-head"><h3><i data-lucide="circle-alert" style="color:#B87711"></i> Use these soon</h3><a href="recipes.html">Recipes for these</a></div>
+          <ul class="soon">
+            <li><span class="food c4"><i data-lucide="leafy-green"></i></span><div><b>Baby spinach</b><small>About half the tub</small></div><span class="days r">Thu</span></li>
+            <li><span class="food c2"><i data-lucide="drumstick"></i></span><div><b>Chicken thighs</b><small>Diego's split, 2.5 lb</small></div><span class="days a">Fri</span></li>
+            <li><span class="food c3"><i data-lucide="milk"></i></span><div><b>Milk</b><small>Maybe 2 cups left</small></div><span class="days a">Sat</span></li>
+            <li><span class="food c5"><i data-lucide="cherry"></i></span><div><b>Grape tomatoes</b><small>Most of a pint</small></div><span class="days g">Mon</span></li>
           </ul>
         </div>
       </div>
@@ -69,8 +72,8 @@
 <div class="modal-bg" id="calModal">
   <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="calTitle">
     <div class="modal-head">
-      <div><h2 id="calTitle">Calendar</h2><p>Click any day to jump to it in the planner.</p></div>
-      <button class="x" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+      <div><h2 id="calTitle">The bigger picture</h2><p>Click a day to jump there.</p></div>
+      <button class="x" data-close aria-label="Close"><i data-lucide="x"></i></button>
     </div>
     <div class="cal-toolbar">
       <div class="seg" id="calMode">
@@ -78,15 +81,16 @@
         <button data-mode="month">4 weeks</button>
       </div>
       <div class="week-nav">
-        <button class="icon-btn" id="calPrev" aria-label="Previous"><svg class="icon"><use href="#i-left"/></svg></button>
+        <button class="icon-btn" id="calPrev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
         <span class="range-label" id="calLabel"></span>
-        <button class="icon-btn" id="calNext" aria-label="Next"><svg class="icon"><use href="#i-right"/></svg></button>
+        <button class="icon-btn" id="calNext" aria-label="Next"><i data-lucide="chevron-right"></i></button>
       </div>
     </div>
     <div class="modal-body" id="calBody"></div>
   </div>
 </div>
 
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <script src="js/common.js"></script>
 <script src="js/planner.js"></script>
 </body>

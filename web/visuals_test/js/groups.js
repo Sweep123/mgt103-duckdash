@@ -1,39 +1,48 @@
 /* Group Finder: sample splits, category filter chips, and the "Start a split" popup. */
 
-const avatarColors = ["#3E7C59", "#E8A33D", "#7B6BB0", "#4F8FB0", "#C26A4F"];
+// The big chicken split at the top of the page is in groups.html (id="featured").
+const FEATURED_CATEGORY = "meat";
 
 const splits = [
-  { e: "🍚", item: "Jasmine rice, 25 lb", store: "Costco", cat: "staples", pp: 4.80, filled: 4, total: 5, spot: "Oak Hall lobby", when: "Fri 5:00 PM", save: 58 },
-  { e: "🍗", item: "Chicken thighs, 6 lb", store: "Costco", cat: "meat", pp: 6.00, filled: 2, total: 4, spot: "Library lot", when: "Sat 11:00 AM", save: 40 },
-  { e: "🥚", item: "Eggs, 5 dozen", store: "Sam's Club", cat: "dairy", pp: 3.20, filled: 3, total: 5, spot: "Student Union", when: "Fri 5:00 PM", save: 42 },
-  { e: "🥑", item: "Avocados, 6-pack", store: "Aldi", cat: "produce", pp: 2.25, filled: 1, total: 3, spot: "West Village", when: "Thu 7:00 PM", save: 44 },
-  { e: "🧀", item: "Shredded cheddar, 5 lb", store: "Costco", cat: "dairy", pp: 5.75, filled: 2, total: 3, spot: "Oak Hall lobby", when: "Sun 2:00 PM", save: 36 },
-  { e: "🥩", item: "Ground beef 85/15, 5 lb", store: "Costco", cat: "meat", pp: 7.40, filled: 3, total: 4, spot: "Library lot", when: "Sat 11:00 AM", save: 43 },
-  { e: "🍝", item: "Pasta variety, 12 boxes", store: "Aldi", cat: "staples", pp: 3.00, filled: 5, total: 6, spot: "Student Union", when: "Mon 6:00 PM", save: 45 },
-  { e: "🥦", item: "Frozen broccoli, 4 lb", store: "Trader Joe's", cat: "produce", pp: 2.50, filled: 1, total: 4, spot: "Oak Hall lobby", when: "Wed 4:00 PM", save: 42 },
-  { e: "🫘", item: "Black beans, 12 cans", store: "Costco", cat: "staples", pp: 2.70, filled: 2, total: 4, spot: "West Village", when: "Fri 5:00 PM", save: 44 },
+  { icon: "egg", tint: "c3", item: "Eggs, 60 count", store: "ShopRite", cat: "dairy", each: 2.69, save: 0.50, filled: 3, total: 5, spot: "Palmer Hall", when: "Fri 5:15 PM", by: ["PS", "JL", "AB"], posted: "2h ago" },
+  { icon: "wheat", tint: "c1", item: "Jasmine rice, 20 lb bag", store: "H Mart", cat: "pantry", each: 5.62, save: 3.17, filled: 2, total: 4, spot: "Jonas Hall", when: "Sat 11:00 AM", by: ["BO", "TN"], posted: "5h ago" },
+  { icon: "banana", tint: "c5", item: "Bananas, 2 bunches", store: "Hoboken Farmboy", cat: "produce", each: 1.99, save: 0.62, filled: 1, total: 3, spot: "UCC Tower lobby", when: "Thu 7:40 PM", by: ["LK"], posted: "26 min ago" },
+  { icon: "milk", tint: "c3", item: "Greek yogurt, 48 oz tub", store: "ShopRite", cat: "dairy", each: 2.49, save: 1.08, filled: 2, total: 3, spot: "Davis Hall lobby", when: "Sun 1:00 PM", by: ["MP", "SR"], posted: "1h ago" },
+  { icon: "beef", tint: "c2", item: "Ground beef 80/20, 5 lb", store: "ShopRite", cat: "meat", each: 5.36, save: 1.87, filled: 3, total: 4, spot: "Humphreys Hall", when: "Sat 12:15 PM", by: ["TN", "DR", "BO"], posted: "yesterday" },
+  { icon: "leafy-green", tint: "c4", item: "Baby spinach, 1 lb tub", store: "ShopRite", cat: "produce", each: 1.76, save: 1.35, filled: 2, total: 3, spot: "Library steps", when: "Wed 4:00 PM", by: ["MP", "PS"], posted: "1h ago" },
+  { icon: "bean", tint: "c1", item: "Black beans, 8 cans", store: "ACME", cat: "pantry", each: 1.98, save: 0.71, filled: 1, total: 4, spot: "Hayden Hall", when: "Sun 2:30 PM", by: ["SR"], posted: "6h ago" },
+  { icon: "pizza", tint: "c5", item: "Shredded mozzarella, 2 lb", store: "ShopRite", cat: "dairy", each: 2.93, save: 0.94, filled: 2, total: 3, spot: "Davis Hall lobby", when: "Fri 8:00 PM", by: ["AB", "LK"], posted: "4h ago" },
 ];
 
+const avatarClass = ["av1", "av2", "av3", "av4"];
+
+function splitCard(s) {
+  const left = s.total - s.filled;
+  const avatars = s.by.map((ini, k) => `<span class="${avatarClass[k % 4]}">${ini}</span>`).join("");
+  return `<article class="card hover split">
+    <div class="split-top">
+      <span class="food ${s.tint}">${icon(s.icon)}</span>
+      <div><h3>${s.item}</h3><div class="from">${s.store} · ${s.posted}</div></div>
+    </div>
+    <div class="price"><b>$${s.each.toFixed(2)}</b><span>each</span><span class="badge">−$${s.save.toFixed(2)}</span></div>
+    <div class="spots"><i style="width:${s.filled / s.total * 100}%"></i></div>
+    <div class="meta">
+      <div>${icon("users")}<b>${left} spot${left > 1 ? "s" : ""} left</b>&nbsp;of ${s.total}</div>
+      <div>${icon("map-pin")}${s.spot}</div>
+      <div>${icon("clock")}${s.when}</div>
+    </div>
+    <div class="split-foot"><div class="avatars">${avatars}</div><button class="btn sm" data-toast="You're in the ${s.item.split(",")[0].toLowerCase()} split. (prototype)">Join</button></div>
+  </article>`;
+}
+
 function renderSplits(filter = "all") {
-  document.getElementById("splits").innerHTML = splits
-    .filter(s => filter === "all" || s.cat === filter)
-    .map((s, i) => {
-      const left = s.total - s.filled;
-      const avatars = Array.from({ length: s.filled }, (_, k) =>
-        `<span style="background:${avatarColors[(i + k) % 5]}">${"ABCDEFGHJKLMNPRST"[(i * 3 + k * 5) % 17]}</span>`
-      ).join("");
-      return `<div class="card hover split">
-        <div class="split-top"><div class="emo">${s.e}</div><div><h3>${s.item}</h3><div class="from">from ${s.store}</div></div></div>
-        <div class="price"><b>$${s.pp.toFixed(2)}</b><span>/ person</span><span class="badge" style="margin-left:auto">Save ${s.save}%</span></div>
-        <div class="spots"><i style="width:${s.filled / s.total * 100}%"></i></div>
-        <div class="meta">
-          <div><svg class="icon"><use href="#i-users"/></svg><b style="color:var(--forest)">${left} spot${left > 1 ? "s" : ""} left</b>&nbsp;of ${s.total}</div>
-          <div><svg class="icon"><use href="#i-pin"/></svg>${s.spot}</div>
-          <div><svg class="icon"><use href="#i-clock"/></svg>${s.when}</div>
-        </div>
-        <div class="split-foot"><div class="avatars">${avatars}</div><button class="btn sm" data-toast="Joined ${s.item.split(",")[0]} split (prototype)">Join split</button></div>
-      </div>`;
-    }).join("");
+  const list = splits.filter(s => filter === "all" || s.cat === filter);
+  document.getElementById("splits").innerHTML = list.length
+    ? list.map(splitCard).join("")
+    : `<p class="empty-note">Nothing here right now. Start one and people on your floor will see it.</p>`;
+  document.getElementById("count").textContent = `${list.length} split${list.length === 1 ? "" : "s"}`;
+  document.getElementById("featured").style.display = filter === "all" || filter === FEATURED_CATEGORY ? "" : "none";
+  refreshIcons();
 }
 
 document.getElementById("gfChips").addEventListener("click", e => {

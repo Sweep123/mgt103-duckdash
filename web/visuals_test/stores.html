@@ -6,28 +6,33 @@
 <title>DuckDash · Store Rankings</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="stores">
 
 <main>
-<section class="page active">
+<section class="page">
   <div class="wrap">
     <div class="page-head">
-      <div><h1>Store Rankings</h1><p>Rated by students within 3 miles of campus.</p></div>
+      <div>
+        <h1>Where to shop in <span class="squiggle">Hoboken</span></h1>
+        <p>Rated by 338 Stevens students. Prices last checked Nov 3.</p>
+      </div>
       <div class="seg" id="storeTabs">
-        <button class="active" data-s="meat">🥩 Cheapest Meat</button>
-        <button data-s="produce">🥦 Best Produce</button>
-        <button data-s="staples">🌾 Best Staples</button>
+        <button class="active" data-s="meat"><i data-lucide="drumstick" class="ic-sm"></i> Cheapest Meat</button>
+        <button data-s="produce"><i data-lucide="carrot" class="ic-sm"></i> Best Produce</button>
+        <button data-s="staples"><i data-lucide="wheat" class="ic-sm"></i> Best Staples</button>
       </div>
     </div>
-    <div class="card rank-note"><svg class="icon" style="color:var(--fresh)"><use href="#i-info"/></svg><span id="storeNote"></span></div>
-    <div class="stores" id="stores"></div>
+    <p class="rank-note"><i data-lucide="info" class="ic-sm"></i><span id="storeNote"></span></p>
+    <div id="topStore"></div>
+    <div class="store-list" id="stores"></div>
   </div>
 </section>
 </main>
 
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <script src="js/common.js"></script>
 <script src="js/stores.js"></script>
 </body>

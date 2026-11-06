@@ -3,80 +3,159 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DuckDash · Home</title>
+<title>DuckDash · Split groceries with people on your floor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="home">
 
 <main>
-<section class="page active">
-  <div class="wrap">
-    <div class="hero">
+  <!-- 1. Hero: text left, app screen right -->
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">🎓 Built for students who cook</span>
-        <h1>Bulk prices.<br><em>Zero waste.</em></h1>
-        <p>Split big-box groceries with people in your dorm, plan meals around what you already bought, and find the cheapest store near campus.</p>
+        <p class="kicker"><i data-lucide="map-pin"></i> For Stevens students who cook for themselves</p>
+        <h1>Split a dozen eggs with someone <span class="squiggle">on your floor.</span></h1>
+        <p class="lede">The 10 lb chicken pack at ShopRite is way cheaper per pound, but nobody in Davis Hall needs 10 lb of chicken. DuckDash finds three people who'll take the rest.</p>
         <div class="actions">
-          <button class="btn amber" data-toast="Sign-up is coming soon! 🦆">Sign up free <svg class="icon"><use href="#i-arrow"/></svg></button>
-          <a class="btn ghost" href="groups.html">Browse splits</a>
+          <button class="btn amber" data-toast="Sign-up isn't built yet. This is a prototype!">Sign up with your Stevens email</button>
+          <a class="link-arrow" href="groups.html">See what's being split <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="stats">
-          <div><b>$38</b><span>avg. saved / month</span></div>
-          <div><b>1,240</b><span>students splitting</span></div>
-          <div><b>62%</b><span>less food tossed</span></div>
-        </div>
+        <p class="fine"><i data-lucide="hand-coins" class="ic-sm"></i> Free. You Venmo each other at pickup. We never touch your money.</p>
       </div>
-      <div class="hero-art">
-        <div class="mini"><div class="emo">🍚</div><div><b>25 lb Jasmine Rice</b><small>4 of 5 spots filled · Oak Hall</small></div><span class="badge">Save 58%</span></div>
-        <div class="mini"><div class="emo">🥚</div><div><b>5 dozen eggs</b><small>Pickup Fri 5pm · Library lot</small></div><span class="badge">$3.20 ea</span></div>
-        <div class="mini"><div class="emo">🥬</div><div><b>Spinach uses soon</b><small>Try: Garlic spinach pasta</small></div><span class="badge">2 days</span></div>
-      </div>
-    </div>
 
-    <div class="section-title">
-      <h2>Everything you need to shop smarter</h2>
-      <p>Four tools, one goal: spend less, toss less.</p>
+      <div class="app-shot" aria-label="Screenshot of the Group Finder">
+        <div class="shot-bar">
+          <span class="logo"><span class="logo-mark"><svg width="18" height="18"><use href="#duck"/></svg></span>DuckDash</span>
+          <span class="shot-tabs"><b>Splits</b><span>Planner</span><span>Recipes</span><span>Stores</span></span>
+        </div>
+        <div class="shot-body">
+          <div class="shot-head"><h3>Near Davis Hall</h3><span>4 open · updated 2 min ago</span></div>
+          <div class="shot-row">
+            <span class="food c2"><i data-lucide="drumstick"></i></span>
+            <div><b>Chicken thighs, 10 lb</b><small>ShopRite · Diego R. · 3h ago</small></div>
+            <div class="p">$4.73<small class="hot">1 spot left</small></div>
+          </div>
+          <div class="shot-row">
+            <span class="food c3"><i data-lucide="egg"></i></span>
+            <div><b>Eggs, 60 count</b><small>ShopRite · Priya S. · 2h ago</small></div>
+            <div class="p">$2.69<small class="muted">2 spots</small></div>
+          </div>
+          <div class="shot-row">
+            <span class="food c1"><i data-lucide="wheat"></i></span>
+            <div><b>Jasmine rice, 20 lb</b><small>H Mart · Ben O. · 5h ago</small></div>
+            <div class="p">$5.62<small class="muted">2 spots</small></div>
+          </div>
+          <div class="shot-toast">
+            <span class="avatars"><span class="av2">PS</span></span>
+            <span><b>Priya</b> joined your egg split. Pickup Fri 5:15 at Palmer.</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="features">
-      <a class="card hover feature" href="groups.html">
-        <div class="ficon"><svg class="icon"><use href="#i-users"/></svg></div>
+  </section>
+
+  <!-- 2. Full-width dark band: one real week, as a receipt -->
+  <section class="band-dark">
+    <div class="wrap band-grid">
+      <div>
+        <h2>Maya spent <em>$31.62</em> on groceries last week and threw out nothing.</h2>
+        <p>She's a sophomore in Palmer Hall. She joined three splits, planned four dinners around them, and the spinach got eaten before it went slimy for once.</p>
+        <p class="note">Maya's a made-up example. Once we launch, this is the receipt you'd get every Sunday.</p>
+      </div>
+      <div class="receipt">
+        <h4><span>Maya P. · week of Nov 2</span><span>3 splits</span></h4>
+        <div class="r-line"><div>Eggs<small>¼ of a 60-count split</small></div><div>$2.69<span class="save">−$0.50</span></div></div>
+        <div class="r-line"><div>Chicken thighs<small>2.5 lb, ¼ of a family pack</small></div><div>$4.73<span class="save">−$2.25</span></div></div>
+        <div class="r-line"><div>Baby spinach<small>⅓ of a 1 lb tub</small></div><div>$1.76<span class="save">−$1.35</span></div></div>
+        <div class="r-line"><div>8 other things<small>milk, bread, yogurt, bananas, beans…</small></div><div>$22.44</div></div>
+        <div class="r-total"><span>Total</span><span>$31.62</span></div>
+        <div class="r-saved"><span>Saved by splitting</span><span>$4.10</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Split layout, reversed: planner screen left, copy right -->
+  <section class="split-sec">
+    <div class="wrap split-grid">
+      <div class="mock" aria-label="Screenshot of the Meal Planner">
+        <div class="mock-alert"><i data-lucide="circle-alert"></i><span><b>Spinach</b> goes bad Thursday. It's in Wednesday's dinner.</span></div>
+        <div class="mock-days">
+          <div>
+            <h4>Tue <small>Nov 10</small></h4>
+            <div class="mock-meal c1"><i data-lucide="egg" class="ic-lg"></i>Spinach egg scramble</div>
+            <div class="mock-meal c4"><i data-lucide="refrigerator" class="ic-lg"></i>Leftover burrito bowl</div>
+          </div>
+          <div>
+            <h4>Wed <small>Nov 11</small></h4>
+            <div class="mock-meal empty">+ add</div>
+            <div class="mock-meal c3 hl"><i data-lucide="utensils" class="ic-lg"></i>Garlic spinach pasta</div>
+          </div>
+          <div>
+            <h4>Thu <small>Nov 12</small></h4>
+            <div class="mock-meal c2"><i data-lucide="milk" class="ic-lg"></i>Overnight oats</div>
+            <div class="mock-meal c5"><i data-lucide="cooking-pot" class="ic-lg"></i>Chickpea curry</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Your spinach goes bad <span class="squiggle">Thursday.</span> Wednesday's dinner already uses it.</h2>
+        <p>The planner knows what you bought and when it'll turn, so the stuff that's about to go shows up first. You plan three days at a time, which is about as far ahead as anyone actually plans.</p>
+        <ul class="checks">
+          <li><i data-lucide="check"></i>Leftovers count as a meal (they're most of our lunches)</li>
+          <li><i data-lucide="check"></i>Your grocery list fills itself in from what you plan</li>
+          <li><i data-lucide="check"></i>Split items show up already counted, so you don't buy eggs twice</li>
+        </ul>
+        <a class="link-arrow" href="planner.html">Open the planner <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Numbered list, not cards -->
+  <section class="list-sec">
+    <div class="wrap">
+      <h2>What's in the app</h2>
+      <a class="tool-row" href="groups.html">
+        <span class="n">01</span>
         <h3>Group Finder</h3>
-        <p>Join a bulk split with nearby students and only pay for your share.</p>
-        <span class="go">Find a split <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        <p>Diego posted a 10 lb pack of chicken thighs. Split four ways it's <b>$4.73 each</b>, instead of $6.98 for a small tray.</p>
+        <span class="go"><i data-lucide="arrow-right"></i></span>
       </a>
-      <a class="card hover feature" href="planner.html">
-        <div class="ficon"><svg class="icon"><use href="#i-cal"/></svg></div>
+      <a class="tool-row" href="planner.html">
+        <span class="n">02</span>
         <h3>Meal Planner</h3>
-        <p>Drop recipes into your week and get an auto-built grocery list.</p>
-        <span class="go">Plan my week <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        <p>Three days at a time. Things that are about to go bad get used first.</p>
+        <span class="go"><i data-lucide="arrow-right"></i></span>
       </a>
-      <a class="card hover feature" href="recipes.html">
-        <div class="ficon"><svg class="icon"><use href="#i-book"/></svg></div>
+      <a class="tool-row" href="recipes.html">
+        <span class="n">03</span>
         <h3>Recipes</h3>
-        <p>Cook with what's already in your fridge before it goes bad.</p>
-        <span class="go">Get cooking <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        <p>Tell it you have rice, eggs and spinach. It gives you fried rice for <b>$1.84 a serving</b>.</p>
+        <span class="go"><i data-lucide="arrow-right"></i></span>
       </a>
-      <a class="card hover feature" href="stores.html">
-        <div class="ficon"><svg class="icon"><use href="#i-trophy"/></svg></div>
+      <a class="tool-row" href="stores.html">
+        <span class="n">04</span>
         <h3>Store Rankings</h3>
-        <p>See which stores near campus win on meat, produce and staples.</p>
-        <span class="go">See rankings <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        <p>ShopRite wins on chicken. The farmers market wins on greens. H Mart wins on rice. Rated by 338 Stevens students.</p>
+        <span class="go"><i data-lucide="arrow-right"></i></span>
       </a>
     </div>
+  </section>
 
-    <div class="section-title"><h2>How it works</h2></div>
-    <div class="how">
-      <div class="card"><span class="num">1</span><div><h4>Join or start a split</h4><p>Pick a bulk item, set the share size, choose a pickup spot on campus.</p></div></div>
-      <div class="card"><span class="num">2</span><div><h4>Plan your meals</h4><p>DuckDash suggests recipes that use your share before it expires.</p></div></div>
-      <div class="card"><span class="num">3</span><div><h4>Shop the best store</h4><p>Student-rated rankings point you to the best deal for each category.</p></div></div>
+  <!-- 5. Short centered sign-off -->
+  <section class="cta-sec">
+    <div class="wrap">
+      <svg class="duck-big"><use href="#duck"/></svg>
+      <h2>Someone on your floor is splitting rice.</h2>
+      <p>Grab a share before Friday's pickup.</p>
+      <a class="btn" href="groups.html">Find a split</a>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <script src="js/common.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /*
  * Meal Planner
  * - Main view shows 3 days at a time; arrows move 3 days, "Today" jumps back.
- * - "Calendar view" opens a popup with a Week view or a 4-week view.
+ * - "Whole week" opens a popup with a Week view or a 4-week view.
  *   Clicking any day there jumps the 3-day view to that day.
  * All data is placeholder.
  */
@@ -9,37 +9,37 @@
 const START = new Date(2026, 10, 2); // Mon, Nov 2 2026 = day 0
 const TOTAL_DAYS = 56;               // 8 weeks of placeholder data
 const TODAY = 8;                     // Tue, Nov 10
-const meals = [["Breakfast", "☀️"], ["Lunch", "🥪"], ["Dinner", "🌙"]];
+const meals = [["Breakfast", "sunrise"], ["Lunch", "sun"], ["Dinner", "moon"]];
 
-// name: [emoji, cook time, color class, cost per serving]
+// name: [lucide icon, cook time, tint class, cost per serving]
 const RECIPES = {
-  "Overnight oats": ["🥣", "5 min", "c2", "$0.90"],
-  "Spinach egg scramble": ["🍳", "10 min", "c1", "$1.40"],
-  "Chicken burrito bowl": ["🌯", "25 min", "c1", "$2.40"],
-  "Garlic spinach pasta": ["🍝", "20 min", "c3", "$2.10"],
-  "Chickpea curry": ["🍛", "30 min", "c5", "$1.95"],
-  "Turkey wrap": ["🥪", "5 min", "c2", "$2.20"],
-  "Sheet-pan chicken": ["🍗", "35 min", "c1", "$3.10"],
-  "Tortilla pizzas": ["🍕", "15 min", "c3", "$2.00"],
-  "Banana pancakes": ["🥞", "15 min", "c2", "$1.10"],
-  "Beef tacos": ["🌮", "20 min", "c5", "$2.60"],
-  "Veggie fried rice": ["🍜", "15 min", "c1", "$1.50"],
-  "Beef chili": ["🍲", "45 min", "c5", "$2.80"],
-  "Leftover burrito bowl": ["🥗", "0 min", "c4", "$0.00"],
-  "Curry leftovers": ["🍛", "0 min", "c4", "$0.00"],
+  "Overnight oats": ["milk", "5 min", "c2", "$0.87"],
+  "Spinach egg scramble": ["egg", "10 min", "c1", "$1.42"],
+  "Chicken burrito bowl": ["salad", "25 min", "c1", "$2.38"],
+  "Garlic spinach pasta": ["utensils", "20 min", "c3", "$2.07"],
+  "Chickpea curry": ["cooking-pot", "30 min", "c5", "$1.93"],
+  "Turkey & cheddar wrap": ["sandwich", "5 min", "c2", "$2.21"],
+  "Sheet-pan chicken thighs": ["drumstick", "35 min", "c2", "$3.06"],
+  "Tortilla pizzas": ["pizza", "15 min", "c3", "$1.98"],
+  "Banana pancakes": ["croissant", "15 min", "c5", "$1.13"],
+  "Beef tacos": ["beef", "20 min", "c5", "$2.64"],
+  "Egg fried rice": ["egg-fried", "15 min", "c1", "$1.47"],
+  "Beef chili": ["soup", "45 min", "c5", "$2.79"],
+  "Leftover burrito bowl": ["refrigerator", "2 min", "c4", "$0"],
+  "Leftover curry": ["refrigerator", "2 min", "c4", "$0"],
 };
 
 // Hand-placed meals for the current week (Nov 9–15). Key = "day-meal".
 const FIXED = {
   "7-0": "Overnight oats", "7-2": "Chicken burrito bowl",
-  "8-0": "Spinach egg scramble", "8-1": "Leftover burrito bowl", "8-2": "Garlic spinach pasta",
-  "9-1": "Turkey wrap", "9-2": "Chickpea curry",
-  "10-0": "Overnight oats", "10-2": "Sheet-pan chicken",
-  "11-1": "Curry leftovers", "11-2": "Tortilla pizzas",
+  "8-0": "Spinach egg scramble", "8-1": "Leftover burrito bowl", "8-2": "Sheet-pan chicken thighs",
+  "9-1": "Turkey & cheddar wrap", "9-2": "Garlic spinach pasta",
+  "10-0": "Overnight oats", "10-2": "Chickpea curry",
+  "11-1": "Leftover curry", "11-2": "Tortilla pizzas",
   "12-0": "Banana pancakes", "12-2": "Beef tacos",
-  "13-1": "Veggie fried rice",
+  "13-1": "Egg fried rice",
 };
-const FILLER = Object.keys(RECIPES).filter(n => !/left/i.test(n));
+const FILLER = Object.keys(RECIPES).filter(n => !/leftover/i.test(n));
 
 // Placeholder: other weeks get a predictable pattern, later weeks are emptier.
 function mealAt(day, meal) {
@@ -59,27 +59,31 @@ const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 let start = TODAY;
 
 function recipeCard(name, big) {
-  const [e, time, color, cost] = RECIPES[name];
-  return `<div class="rc ${color}"><span class="e">${e}</span><b>${name}</b><small>${big ? `<span>⏱ ${time}</span><span>${cost} / serving</span>` : `⏱ ${time}`}</small></div>`;
+  const [ic, time, tint, cost] = RECIPES[name];
+  const details = big
+    ? `<span>${time}</span><span>${cost === "$0" ? "already paid for" : cost + " a serving"}</span>`
+    : time;
+  return `<div class="rc ${tint}">${icon(ic)}<b>${name}</b><small>${details}</small></div>`;
 }
 
 function renderThreeDays() {
   const days = [start, start + 1, start + 2];
   let html = `<div></div>` + days.map(d =>
-    `<div class="hd ${d === TODAY ? "today" : ""}">${wkday(d)}<small>${short(d)}</small></div>`).join("");
-  meals.forEach(([meal, emoji], mi) => {
-    html += `<div class="meal">${emoji}<span class="ml"> ${meal}</span></div>`;
+    `<div class="hd ${d === TODAY ? "today" : ""}">${d === TODAY ? "Today" : wkday(d)}<small>${short(d)}</small></div>`).join("");
+  meals.forEach(([meal, ic], mi) => {
+    html += `<div class="meal">${icon(ic, "ic-sm")}<span class="ml">${meal}</span></div>`;
     days.forEach(d => {
       const name = mealAt(d, mi);
       html += name
         ? `<div class="slot">${recipeCard(name, true)}</div>`
-        : `<div class="slot empty" title="Add a recipe" data-toast="Recipe picker would open here">+</div>`;
+        : `<div class="slot empty" title="Add a meal" data-toast="Recipe picker would open here">${icon("plus")}</div>`;
     });
   });
   document.getElementById("cal").innerHTML = html;
-  document.getElementById("rangeLabel").textContent = `${wkday(start)} ${short(start)} – ${wkday(start + 2)} ${short(start + 2)}`;
+  document.getElementById("rangeLabel").textContent = `${short(start)} – ${short(start + 2)}`;
   document.getElementById("prevDays").disabled = start === 0;
   document.getElementById("nextDays").disabled = start >= TOTAL_DAYS - 3;
+  refreshIcons();
 }
 
 function goTo(day) { start = clamp(day, 0, TOTAL_DAYS - 3); renderThreeDays(); }
@@ -99,12 +103,12 @@ function renderWeek() {
   const days = Array.from({ length: 7 }, (_, i) => calStart + i);
   let html = `<div></div>` + days.map(d =>
     `<div class="hd ${d === TODAY ? "today" : ""} ${inRange(d) ? "inrange" : ""}" data-day="${d}">${wkday(d)}<small>${short(d)}</small></div>`).join("");
-  meals.forEach(([meal, emoji], mi) => {
-    html += `<div class="meal">${emoji} ${meal}</div>`;
+  meals.forEach(([meal, ic], mi) => {
+    html += `<div class="meal">${icon(ic, "ic-sm")} ${meal}</div>`;
     days.forEach(d => {
       const name = mealAt(d, mi);
       html += name ? `<div class="slot" data-day="${d}">${recipeCard(name, false)}</div>`
-                   : `<div class="slot empty" data-day="${d}">+</div>`;
+                   : `<div class="slot empty" data-day="${d}">${icon("plus", "ic-sm")}</div>`;
     });
   });
   return `<div class="scroll-x"><div class="cal">${html}</div></div>`;
@@ -114,15 +118,16 @@ function renderMonth() {
   let html = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(d => `<div class="mh">${d}</div>`).join("");
   for (let d = calStart; d < calStart + 28; d++) {
     const lines = meals.map((_, mi) => mealAt(d, mi)).filter(Boolean).map(name => {
-      const [e, , color] = RECIPES[name];
-      return `<div class="mline ${color}" title="${name}">${e}<span class="mn"> ${name}</span></div>`;
+      const [ic, , tint] = RECIPES[name];
+      return `<div class="mline ${tint}" title="${name}">${icon(ic)}<span class="mn">${name}</span></div>`;
     }).join("");
     const cls = [d === TODAY && "today", inRange(d) && "inrange", d < TODAY && "past"].filter(Boolean).join(" ");
-    const label = dateOf(d).getDate() === 1 ? fmt(dateOf(d), { month: "short" }) + " 1" : dateOf(d).getDate();
-    html += `<div class="mday ${cls}" data-day="${d}"><span class="dn" style="${String(label).length > 2 ? "width:auto;padding:0 6px" : ""}">${label}</span>${lines}</div>`;
+    const n = dateOf(d).getDate();
+    const label = n === 1 ? fmt(dateOf(d), { month: "short" }) + " 1" : n;
+    html += `<div class="mday ${cls}" data-day="${d}"><span class="dn">${label}</span>${lines}</div>`;
   }
   return `<div class="month">${html}</div>
-    <div class="cal-legend"><span><i style="background:var(--sage)"></i>Showing in planner</span><span><i style="background:var(--fresh)"></i>Today</span></div>`;
+    <div class="cal-legend"><span><i style="background:var(--sage);border:1px solid var(--line)"></i>In your 3-day view</span><span><i style="background:var(--forest)"></i>Today</span></div>`;
 }
 
 function renderCal() {
@@ -131,6 +136,7 @@ function renderCal() {
   document.getElementById("calLabel").textContent = `${short(calStart)} – ${short(calStart + span - 1)}`;
   document.getElementById("calPrev").disabled = calStart === 0;
   document.getElementById("calNext").disabled = calStart + span >= TOTAL_DAYS;
+  refreshIcons();
 }
 
 function openCal() {

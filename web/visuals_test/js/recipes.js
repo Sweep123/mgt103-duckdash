@@ -1,60 +1,75 @@
-/* Recipes: sub-tabs (What I Have / Recently Bought / My Recipes) and recipe cards. */
+/* Recipes: sub-tabs (What I Have / Recently Bought / My Recipes) and recipe cards.
+ * The first recipe in each tab is shown as a bigger "featured" card. */
 
-// Each recipe: [emoji, name, time, price per serving, diet tags, image color class, match label]
+const pantryTag = (ic, label) => `<span class="tag">${icon(ic)}${label}</span>`;
+
 const recipeSets = {
   have: {
-    strip: `<b>In your kitchen:</b> <span class="pill">🍚 Rice</span><span class="pill">🥚 Eggs</span><span class="pill">🥬 Spinach</span><span class="pill">🍗 Chicken</span><span class="pill">🧄 Garlic</span><span class="pill">🍅 Tomatoes</span><a class="btn sm ghost" style="margin-left:auto" href="#">Edit pantry</a>`,
+    strip: `<b>In your kitchen:</b>
+      ${pantryTag("wheat", "Rice")}${pantryTag("egg", "Eggs")}${pantryTag("leafy-green", "Spinach")}
+      ${pantryTag("drumstick", "Chicken thighs")}${pantryTag("cherry", "Grape tomatoes")}${pantryTag("sprout", "Garlic")}
+      <a class="link-arrow" href="#">Edit pantry ${icon("arrow-right", "ic-sm")}</a>`,
     list: [
-      ["🍳", "Spinach & egg fried rice", "15 min", "$1.80", ["Vegetarian", "High protein"], "bg1", "Have 5/5"],
-      ["🍝", "Garlic spinach pasta", "20 min", "$2.10", ["Vegetarian"], "bg2", "Have 4/5"],
-      ["🍗", "Lemon garlic chicken", "30 min", "$3.40", ["High protein", "Gluten-free"], "bg3", "Have 4/6"],
-      ["🍅", "Shakshuka", "25 min", "$2.25", ["Vegetarian", "Gluten-free"], "bg4", "Have 5/6"],
-      ["🥘", "Chicken & rice skillet", "35 min", "$2.90", ["High protein"], "bg5", "Have 5/7"],
-      ["🥗", "Warm spinach salad", "10 min", "$1.60", ["Vegan", "Under 20 min"], "bg6", "Have 3/4"],
+      { icon: "egg-fried", tint: "c1", name: "Egg fried rice with spinach", time: "15 min", cost: "$1.84", tags: ["Vegetarian", "22g protein"], match: "Uses 5 of 5 things you have", cooked: 41,
+        desc: "Day-old rice works way better than fresh. Push it to the side, crack two eggs in, then throw the spinach on at the very end." },
+      { icon: "utensils", tint: "c3", name: "Garlic spinach pasta", time: "20 min", cost: "$2.07", tags: ["Vegetarian"], match: "Uses 3 of 4", cooked: 28 },
+      { icon: "drumstick", tint: "c2", name: "Lemon garlic chicken thighs", time: "35 min", cost: "$2.93", tags: ["34g protein", "Gluten-free"], match: "Uses 3 of 5", cooked: 19 },
+      { icon: "cooking-pot", tint: "c5", name: "Shakshuka", time: "25 min", cost: "$2.21", tags: ["Vegetarian"], match: "Uses 3 of 6", cooked: 12 },
+      { icon: "salad", tint: "c4", name: "Wilted spinach salad + egg", time: "10 min", cost: "$1.57", tags: ["Vegetarian", "Under 20 min"], match: "Uses 3 of 4", cooked: 7 },
     ],
   },
   recent: {
-    strip: `<b>Bought in the last 7 days:</b> <span class="pill">🥑 Avocados · Mon</span><span class="pill">🧀 Cheddar · Mon</span><span class="pill">🫘 Black beans · Sat</span><span class="pill">🥩 Ground beef · Sat</span>`,
+    strip: `<b>Bought this week:</b>
+      ${pantryTag("beef", "Ground beef · Sat")}${pantryTag("bean", "Black beans · Sat")}
+      ${pantryTag("banana", "Bananas · Thu")}${pantryTag("pizza", "Mozzarella · Thu")}`,
     list: [
-      ["🌮", "Beef & bean tacos", "20 min", "$2.60", ["High protein"], "bg3", "Uses 3 recent"],
-      ["🥑", "Avocado toast + egg", "10 min", "$1.90", ["Vegetarian", "Under 20 min"], "bg6", "Uses 1 recent"],
-      ["🧀", "Cheesy bean quesadillas", "15 min", "$1.70", ["Vegetarian"], "bg2", "Uses 2 recent"],
-      ["🍲", "Beef chili", "45 min", "$2.80", ["High protein", "Gluten-free"], "bg5", "Uses 3 recent"],
-      ["🥙", "Burrito bowls", "25 min", "$2.40", ["Gluten-free"], "bg1", "Uses 4 recent"],
+      { icon: "beef", tint: "c2", name: "Beef & black bean tacos", time: "20 min", cost: "$2.62", tags: ["31g protein"], match: "Uses 2 things from Saturday", cooked: 36,
+        desc: "One pound of beef plus a can of beans makes eight tacos. Freeze half the filling for next week." },
+      { icon: "croissant", tint: "c5", name: "Banana oat pancakes", time: "15 min", cost: "$0.94", tags: ["Vegetarian"], match: "Uses your bananas", cooked: 22 },
+      { icon: "pizza", tint: "c3", name: "Cheesy bean quesadillas", time: "12 min", cost: "$1.71", tags: ["Vegetarian", "Under 20 min"], match: "Uses 2 recent", cooked: 17 },
+      { icon: "soup", tint: "c1", name: "Beef chili (makes 4)", time: "50 min", cost: "$2.38", tags: ["28g protein", "Gluten-free"], match: "Uses 2 recent", cooked: 9 },
     ],
   },
   mine: {
-    strip: `<b>Your saved &amp; created recipes</b> <span class="pill">❤️ 4 favorites</span><span class="pill">✍️ 2 created</span>`,
+    strip: `<b>Saved and written by you</b> · 3 saved · 2 of your own`,
     list: [
-      ["🥣", "Mom's overnight oats", "5 min", "$0.90", ["Vegetarian", "Under 20 min"], "bg2", "Created by you"],
-      ["🍛", "Dorm chickpea curry", "30 min", "$1.95", ["Vegan", "Gluten-free"], "bg5", "Saved"],
-      ["🍜", "Veggie fried rice", "15 min", "$1.50", ["Vegetarian"], "bg1", "Saved"],
-      ["🍕", "Tortilla pizzas", "15 min", "$2.00", ["Vegetarian"], "bg3", "Created by you"],
+      { icon: "milk", tint: "c2", name: "Mom's overnight oats", time: "5 min", cost: "$0.87", tags: ["Vegetarian", "No stove"], match: "Written by you", cooked: 14, saved: true,
+        desc: "Half cup oats, half cup milk, spoon of yogurt, banana on top. Make three jars on Sunday night." },
+      { icon: "cooking-pot", tint: "c5", name: "Dorm chickpea curry", time: "30 min", cost: "$1.93", tags: ["Vegan"], match: "Saved from Priya S.", cooked: 53, saved: true },
+      { icon: "egg-fried", tint: "c1", name: "Egg fried rice", time: "15 min", cost: "$1.47", tags: ["Vegetarian"], match: "Saved", cooked: 41, saved: true },
+      { icon: "pizza", tint: "c3", name: "Tortilla pizzas", time: "15 min", cost: "$1.98", tags: ["Vegetarian"], match: "Written by you", cooked: 6, saved: true },
       "add",
     ],
   },
 };
 
-function recipeCard(r, saved) {
-  return `<div class="card hover recipe">
-    <div class="img ${r[5]}">${r[0]}<span class="badge">${r[3]} / serving</span><button class="fav ${saved ? "on" : ""}" aria-label="Save"><svg class="icon" style="width:18px;height:18px"><use href="#i-heart"/></svg></button></div>
-    <div class="body">
-      <span class="match">${r[6]}</span>
-      <h3>${r[1]}</h3>
-      <div class="info"><span><svg class="icon"><use href="#i-clock"/></svg>${r[2]}</span><span><svg class="icon"><use href="#i-users"/></svg>2 servings</span></div>
-      <div class="tags">${r[4].map(t => `<span class="tag">${t}</span>`).join("")}</div>
+function recipeCard(r, featured) {
+  return `<article class="card hover recipe${featured ? " featured" : ""}">
+    <div class="img ${r.tint}">
+      <span class="plate">${icon(r.icon)}</span>
+      <span class="badge">${r.cost} a serving</span>
+      <button class="fav ${r.saved ? "on" : ""}" aria-label="Save">${icon("bookmark")}</button>
     </div>
-  </div>`;
+    <div class="body">
+      <span class="match">${r.match}</span>
+      <h3>${r.name}</h3>
+      ${featured && r.desc ? `<p class="desc">${r.desc}</p>` : ""}
+      <div class="info"><span>${icon("clock")}${r.time}</span><span>${icon("flame")}cooked ${r.cooked}× this month</span></div>
+      <div class="tags">${r.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+      ${featured ? `<button class="btn sm" style="align-self:flex-start;margin-top:6px" data-toast="Added to Wednesday dinner (prototype)">Add to my planner</button>` : ""}
+    </div>
+  </article>`;
 }
 
-const addCard = `<div class="card add-card hover" data-toast="Recipe editor would open here"><div><span class="plus">＋</span>Add your own recipe</div></div>`;
+const addCard = `<div class="card add-card" data-toast="Recipe editor would open here"><div>${icon("plus")}Write down a recipe</div></div>`;
 
 function renderRecipes(key) {
   const set = recipeSets[key];
   document.getElementById("recStrip").innerHTML = set.strip;
   document.getElementById("recipes").innerHTML = set.list
-    .map(r => r === "add" ? addCard : recipeCard(r, key === "mine"))
+    .map((r, i) => r === "add" ? addCard : recipeCard(r, i === 0))
     .join("");
+  refreshIcons();
 }
 
 document.getElementById("recTabs").addEventListener("click", e => {
