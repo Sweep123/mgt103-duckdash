@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DuckDash · Store Rankings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="stores">
+
+<main>
+<section class="page active">
+  <div class="wrap">
+    <div class="page-head">
+      <div><h1>Store Rankings</h1><p>Rated by students within 3 miles of campus.</p></div>
+      <div class="seg" id="storeTabs">
+        <button class="active" data-s="meat">🥩 Cheapest Meat</button>
+        <button data-s="produce">🥦 Best Produce</button>
+        <button data-s="staples">🌾 Best Staples</button>
+      </div>
+    </div>
+    <div class="card rank-note"><svg class="icon" style="color:var(--fresh)"><use href="#i-info"/></svg><span id="storeNote"></span></div>
+    <div class="stores" id="stores"></div>
+  </div>
+</section>
+</main>
+
+<script src="js/common.js"></script>
+<script src="js/stores.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DuckDash · Group Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="groups">
+
+<main>
+<section class="page active">
+  <div class="wrap">
+    <div class="page-head">
+      <div><h1>Group Finder</h1><p>Split bulk buys with students near you.</p></div>
+      <button class="btn" id="openSplit"><svg class="icon"><use href="#i-plus"/></svg> Start a split</button>
+    </div>
+    <div class="gf">
+      <aside class="card sidebar">
+        <h3>Filters</h3>
+        <div class="fgroup">
+          <h4>Category</h4>
+          <label class="check"><input type="checkbox" checked> Staples &amp; grains</label>
+          <label class="check"><input type="checkbox" checked> Meat &amp; protein</label>
+          <label class="check"><input type="checkbox" checked> Produce</label>
+          <label class="check"><input type="checkbox"> Dairy</label>
+          <label class="check"><input type="checkbox"> Snacks</label>
+        </div>
+        <div class="fgroup">
+          <h4>Pickup spot</h4>
+          <label class="check"><input type="checkbox" checked> Oak Hall lobby</label>
+          <label class="check"><input type="checkbox" checked> Library lot</label>
+          <label class="check"><input type="checkbox"> Student Union</label>
+          <label class="check"><input type="checkbox"> West Village</label>
+        </div>
+        <div class="fgroup">
+          <h4>Max price / person</h4>
+          <input class="range" type="range" min="2" max="30" value="15">
+          <div class="range-labels"><span>$2</span><span>$15</span><span>$30</span></div>
+        </div>
+        <div class="fgroup">
+          <h4>Pickup date</h4>
+          <div class="chips"><button class="chip active">This week</button><button class="chip">Next week</button></div>
+        </div>
+      </aside>
+
+      <div>
+        <div class="gf-toolbar">
+          <label class="search"><svg class="icon"><use href="#i-search"/></svg><input placeholder="Search rice, chicken, oat milk…"></label>
+          <div class="chips" id="gfChips">
+            <button class="chip active" data-f="all">All</button>
+            <button class="chip" data-f="staples">Staples</button>
+            <button class="chip" data-f="meat">Meat</button>
+            <button class="chip" data-f="produce">Produce</button>
+            <button class="chip" data-f="dairy">Dairy</button>
+          </div>
+        </div>
+        <div class="splits" id="splits"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Start a split popup -->
+<div class="modal-bg" id="splitModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal-head">
+      <div><h2 id="mTitle">Start a split</h2><p>Buy in bulk, share the cost.</p></div>
+      <button class="x" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label>Item</label><input value="Costco chicken thighs, 6 lb"></div>
+      <div class="row2">
+        <div class="field"><label>Total price</label><input value="$24.00"></div>
+        <div class="field"><label>Number of people</label><select><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Pickup spot</label><select><option>Oak Hall lobby</option><option>Library lot</option><option>Student Union</option></select></div>
+        <div class="field"><label>Pickup time</label><input value="Fri, Nov 13 · 5:00 PM"></div>
+      </div>
+      <div class="field"><label>Store</label><select><option>Costco – Route 9</option><option>Aldi – Main St</option><option>Trader Joe's</option></select></div>
+      <div class="calc"><span>Each person pays</span><span><b>$6.00</b> <span class="badge">Save 40%</span></span></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close>Cancel</button>
+      <button class="btn" data-close data-toast="Split posted! (prototype) ✅">Post split</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/groups.js"></script>
+</body>
+</html>

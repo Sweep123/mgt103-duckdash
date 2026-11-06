@@ -3,84 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DuckDash</title>
+<title>DuckDash · Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-<!-- Icon sprite -->
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
-    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
-    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
-    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
-    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></symbol>
-    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-6 6-9 16-10-1 10-4 16-10 16"/><path d="M4 21c3-6 6-9 10-11"/></symbol>
-    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-3 7-7 0-5-5-7-5-12-3 2-6 6-6 9-1-1-2-2-2-4-2 2-1 5-1 7 0 4 3 7 7 7z"/></symbol>
-    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></symbol>
-    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M6 17v2M18 17v2M3 13l2-6h14l2 6v4H3z"/><circle cx="7.5" cy="13.5" r=".5"/><circle cx="16.5" cy="13.5" r=".5"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></symbol>
-    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
-    <symbol id="duck" viewBox="0 0 40 40"><path d="M14 10a7 7 0 0 1 13.4 2.8c-.1.8.4 1.5 1.1 1.7l3.5 1c.9.3.9 1.5 0 1.8l-3.2 1.2c3.2 1.6 5.2 4.6 5.2 8.2 0 5.3-5.6 8.3-13 8.3S6 32 6 26.5c0-2 1-3.4 2.6-3.8 2.3-.6 4.6.6 6.6.3 1.6-.2 2.2-1.3 1.2-2.6A7 7 0 0 1 14 10z" fill="#1F3D2B"/><circle cx="21.5" cy="11.5" r="1.6" fill="#F7F4EC"/><path d="M13 27c3 2.5 8 2.5 12 0" stroke="#3E7C59" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
-  </defs>
-</svg>
-
-<header class="nav">
-  <div class="wrap">
-    <a href="#home" class="logo" aria-label="DuckDash home">
-      <span class="logo-mark"><svg width="30" height="30"><use href="#duck"/></svg></span>
-      <span>Duck<em>Dash</em></span>
-    </a>
-    <div class="nav-right">
-      <nav class="tabs" aria-label="Main">
-        <a class="tab" href="#home" data-tab="home">Home</a>
-        <a class="tab" href="#groups" data-tab="groups">Group Finder</a>
-        <a class="tab" href="#planner" data-tab="planner">Meal Planner</a>
-        <a class="tab" href="#recipes" data-tab="recipes">Recipes</a>
-        <a class="tab" href="#stores" data-tab="stores">Store Rankings</a>
-      </nav>
-      <button class="profile" id="profileBtn" aria-label="Profile">JD
-        <div class="profile-menu" id="profileMenu">
-          <div class="who"><b>Jordan Duck</b><small>Class of '28 · Oak Hall</small></div>
-          <a href="#">My profile</a>
-          <a href="#">My splits <span class="badge" style="float:right">3</span></a>
-          <a href="#">Dietary preferences</a>
-          <a href="#">Settings</a>
-          <a href="#">Log out</a>
-        </div>
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="Open menu"><svg class="icon" style="width:24px;height:24px"><use href="#i-menu"/></svg></button>
-    </div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="wrap">
-      <a class="tab" href="#home" data-tab="home">Home</a>
-      <a class="tab" href="#groups" data-tab="groups">Group Finder</a>
-      <a class="tab" href="#planner" data-tab="planner">Meal Planner</a>
-      <a class="tab" href="#recipes" data-tab="recipes">Recipes</a>
-      <a class="tab" href="#stores" data-tab="stores">Store Rankings</a>
-    </div>
-  </div>
-</header>
+<body data-page="home">
 
 <main>
-<!-- ================= HOME ================= -->
-<section class="page" id="page-home">
+<section class="page active">
   <div class="wrap">
     <div class="hero">
       <div>
@@ -89,7 +21,7 @@
         <p>Split big-box groceries with people in your dorm, plan meals around what you already bought, and find the cheapest store near campus.</p>
         <div class="actions">
           <button class="btn amber" data-toast="Sign-up is coming soon! 🦆">Sign up free <svg class="icon"><use href="#i-arrow"/></svg></button>
-          <a class="btn ghost" href="#groups">Browse splits</a>
+          <a class="btn ghost" href="groups.html">Browse splits</a>
         </div>
         <div class="stats">
           <div><b>$38</b><span>avg. saved / month</span></div>
@@ -109,25 +41,25 @@
       <p>Four tools, one goal: spend less, toss less.</p>
     </div>
     <div class="features">
-      <a class="card hover feature" href="#groups">
+      <a class="card hover feature" href="groups.html">
         <div class="ficon"><svg class="icon"><use href="#i-users"/></svg></div>
         <h3>Group Finder</h3>
         <p>Join a bulk split with nearby students and only pay for your share.</p>
         <span class="go">Find a split <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
       </a>
-      <a class="card hover feature" href="#planner">
+      <a class="card hover feature" href="planner.html">
         <div class="ficon"><svg class="icon"><use href="#i-cal"/></svg></div>
         <h3>Meal Planner</h3>
         <p>Drop recipes into your week and get an auto-built grocery list.</p>
         <span class="go">Plan my week <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
       </a>
-      <a class="card hover feature" href="#recipes">
+      <a class="card hover feature" href="recipes.html">
         <div class="ficon"><svg class="icon"><use href="#i-book"/></svg></div>
         <h3>Recipes</h3>
         <p>Cook with what's already in your fridge before it goes bad.</p>
         <span class="go">Get cooking <svg class="icon" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
       </a>
-      <a class="card hover feature" href="#stores">
+      <a class="card hover feature" href="stores.html">
         <div class="ficon"><svg class="icon"><use href="#i-trophy"/></svg></div>
         <h3>Store Rankings</h3>
         <p>See which stores near campus win on meat, produce and staples.</p>
@@ -143,399 +75,8 @@
     </div>
   </div>
 </section>
-
-<!-- ================= GROUP FINDER ================= -->
-<section class="page" id="page-groups">
-  <div class="wrap">
-    <div class="page-head">
-      <div><h1>Group Finder</h1><p>Split bulk buys with students near you.</p></div>
-      <button class="btn" id="openSplit"><svg class="icon"><use href="#i-plus"/></svg> Start a split</button>
-    </div>
-    <div class="gf">
-      <aside class="card sidebar">
-        <h3>Filters</h3>
-        <div class="fgroup">
-          <h4>Category</h4>
-          <label class="check"><input type="checkbox" checked> Staples &amp; grains</label>
-          <label class="check"><input type="checkbox" checked> Meat &amp; protein</label>
-          <label class="check"><input type="checkbox" checked> Produce</label>
-          <label class="check"><input type="checkbox"> Dairy</label>
-          <label class="check"><input type="checkbox"> Snacks</label>
-        </div>
-        <div class="fgroup">
-          <h4>Pickup spot</h4>
-          <label class="check"><input type="checkbox" checked> Oak Hall lobby</label>
-          <label class="check"><input type="checkbox" checked> Library lot</label>
-          <label class="check"><input type="checkbox"> Student Union</label>
-          <label class="check"><input type="checkbox"> West Village</label>
-        </div>
-        <div class="fgroup">
-          <h4>Max price / person</h4>
-          <input class="range" type="range" min="2" max="30" value="15">
-          <div class="range-labels"><span>$2</span><span>$15</span><span>$30</span></div>
-        </div>
-        <div class="fgroup">
-          <h4>Pickup date</h4>
-          <div class="chips"><button class="chip active">This week</button><button class="chip">Next week</button></div>
-        </div>
-      </aside>
-
-      <div>
-        <div class="gf-toolbar">
-          <label class="search"><svg class="icon"><use href="#i-search"/></svg><input placeholder="Search rice, chicken, oat milk…"></label>
-          <div class="chips" id="gfChips">
-            <button class="chip active" data-f="all">All</button>
-            <button class="chip" data-f="staples">Staples</button>
-            <button class="chip" data-f="meat">Meat</button>
-            <button class="chip" data-f="produce">Produce</button>
-            <button class="chip" data-f="dairy">Dairy</button>
-          </div>
-        </div>
-        <div class="splits" id="splits"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= MEAL PLANNER ================= -->
-<section class="page" id="page-planner">
-  <div class="wrap">
-    <div class="page-head">
-      <div><h1>Meal Planner</h1><p>Drag recipes into your week. Your grocery list builds itself.</p></div>
-      <div class="week-nav">
-        <button class="icon-btn" aria-label="Previous week"><svg class="icon"><use href="#i-left"/></svg></button>
-        <span>Nov 9 – 15</span>
-        <button class="icon-btn" aria-label="Next week"><svg class="icon"><use href="#i-right"/></svg></button>
-      </div>
-    </div>
-    <div class="mp">
-      <div class="card cal-wrap"><div class="cal" id="cal"></div></div>
-      <div class="side">
-        <div class="card panel">
-          <div class="panel-head"><h3><svg class="icon"><use href="#i-cart"/></svg> Grocery list</h3><a href="#">Share</a></div>
-          <div class="gl-sub">Produce</div>
-          <ul class="glist">
-            <li><input type="checkbox" id="g1"><label for="g1">Bell peppers</label><span class="q">3</span></li>
-            <li><input type="checkbox" id="g2"><label for="g2">Yellow onions</label><span class="q">2</span></li>
-            <li class="done"><input type="checkbox" id="g3" checked><label for="g3">Bananas</label><span class="q">1 bunch</span></li>
-          </ul>
-          <div class="gl-sub">Protein &amp; dairy</div>
-          <ul class="glist">
-            <li><input type="checkbox" id="g4"><label for="g4">Chicken thighs</label><span class="q">2 lb</span></li>
-            <li><input type="checkbox" id="g5"><label for="g5">Greek yogurt</label><span class="q">32 oz</span></li>
-            <li><input type="checkbox" id="g6"><label for="g6">Shredded cheese</label><span class="q">8 oz</span></li>
-          </ul>
-          <div class="gl-sub">Pantry</div>
-          <ul class="glist">
-            <li><input type="checkbox" id="g7"><label for="g7">Black beans</label><span class="q">2 cans</span></li>
-            <li><input type="checkbox" id="g8"><label for="g8">Tortillas</label><span class="q">1 pack</span></li>
-          </ul>
-          <div class="total"><span>Est. total</span><span>$27.40 <span class="badge" style="margin-left:6px">−$9 via splits</span></span></div>
-        </div>
-        <div class="card panel">
-          <div class="panel-head"><h3><svg class="icon" style="color:var(--amber)"><use href="#i-alert"/></svg> Use soon</h3><a href="#recipes">Find recipes</a></div>
-          <ul class="glist soon">
-            <li><span class="e">🥬</span><div><b>Spinach</b><small>Half bag left</small></div><span class="days r">1 day</span></li>
-            <li><span class="e">🍗</span><div><b>Chicken breast</b><small>From rice &amp; chicken split</small></div><span class="days a">2 days</span></li>
-            <li><span class="e">🥛</span><div><b>Milk</b><small>~2 cups left</small></div><span class="days a">3 days</span></li>
-            <li><span class="e">🍅</span><div><b>Cherry tomatoes</b><small>1 pint</small></div><span class="days g">5 days</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= RECIPES ================= -->
-<section class="page" id="page-recipes">
-  <div class="wrap">
-    <div class="page-head">
-      <div><h1>Recipes</h1><p>Cheap, quick meals that use what you've got.</p></div>
-      <label class="search" style="max-width:320px"><svg class="icon"><use href="#i-search"/></svg><input placeholder="Search recipes…"></label>
-    </div>
-    <div class="rec-bar">
-      <div class="seg" id="recTabs">
-        <button class="active" data-r="have">What I Have</button>
-        <button data-r="recent">Recently Bought</button>
-        <button data-r="mine">My Recipes</button>
-      </div>
-      <div class="chips">
-        <button class="chip active">Any diet</button>
-        <button class="chip">Vegetarian</button>
-        <button class="chip">High protein</button>
-        <button class="chip">Under 20 min</button>
-      </div>
-    </div>
-    <div class="card have-strip" id="recStrip"></div>
-    <div class="recipes" id="recipes"></div>
-  </div>
-</section>
-
-<!-- ================= STORE RANKINGS ================= -->
-<section class="page" id="page-stores">
-  <div class="wrap">
-    <div class="page-head">
-      <div><h1>Store Rankings</h1><p>Rated by students within 3 miles of campus.</p></div>
-      <div class="seg" id="storeTabs">
-        <button class="active" data-s="meat">🥩 Cheapest Meat</button>
-        <button data-s="produce">🥦 Best Produce</button>
-        <button data-s="staples">🌾 Best Staples</button>
-      </div>
-    </div>
-    <div class="card rank-note"><svg class="icon" style="color:var(--fresh)"><use href="#i-info"/></svg><span id="storeNote"></span></div>
-    <div class="stores" id="stores"></div>
-  </div>
-</section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <div class="logo"><span class="logo-mark"><svg width="30" height="30"><use href="#duck"/></svg></span><span>Duck<em style="font-style:normal;color:var(--amber)">Dash</em></span></div>
-      <p>Bulk prices. Zero waste. Groceries made for students who cook for themselves.</p>
-    </div>
-    <div><h4>Features</h4><a href="#groups">Group Finder</a><a href="#planner">Meal Planner</a><a href="#recipes">Recipes</a><a href="#stores">Store Rankings</a></div>
-    <div><h4>Company</h4><a href="#">About</a><a href="#">Campus ambassadors</a><a href="#">Contact</a></div>
-    <div><h4>Help</h4><a href="#">How splits work</a><a href="#">Safety &amp; pickup</a><a href="#">FAQ</a></div>
-    <div class="copy"><span>© 2026 DuckDash · MGT 103 prototype</span><span>Placeholder data for demo purposes</span></div>
-  </div>
-</footer>
-
-<!-- Start a split modal -->
-<div class="modal-bg" id="splitModal">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-    <div class="modal-head">
-      <div><h2 id="mTitle">Start a split</h2><p>Buy in bulk, share the cost.</p></div>
-      <button class="x" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
-    </div>
-    <div class="modal-body">
-      <div class="field"><label>Item</label><input value="Costco chicken thighs, 6 lb"></div>
-      <div class="row2">
-        <div class="field"><label>Total price</label><input value="$24.00"></div>
-        <div class="field"><label>Number of people</label><select><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></div>
-      </div>
-      <div class="row2">
-        <div class="field"><label>Pickup spot</label><select><option>Oak Hall lobby</option><option>Library lot</option><option>Student Union</option></select></div>
-        <div class="field"><label>Pickup time</label><input value="Fri, Nov 13 · 5:00 PM"></div>
-      </div>
-      <div class="field"><label>Store</label><select><option>Costco – Route 9</option><option>Aldi – Main St</option><option>Trader Joe's</option></select></div>
-      <div class="calc"><span>Each person pays</span><span><b>$6.00</b> <span class="badge">Save 40%</span></span></div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn ghost" data-close>Cancel</button>
-      <button class="btn" data-close data-toast="Split posted! (prototype) ✅">Post split</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-/* ---------- Routing ---------- */
-const pages = ["home","groups","planner","recipes","stores"];
-function route() {
-  const id = (location.hash || "#home").slice(1);
-  const page = pages.includes(id) ? id : "home";
-  document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === "page-" + page));
-  document.querySelectorAll("[data-tab]").forEach(t => t.classList.toggle("active", t.dataset.tab === page));
-  document.getElementById("mobileMenu").classList.remove("open");
-  window.scrollTo({ top: 0 });
-}
-window.addEventListener("hashchange", route);
-
-/* ---------- Nav bits ---------- */
-document.getElementById("hamburger").onclick = () => document.getElementById("mobileMenu").classList.toggle("open");
-const pm = document.getElementById("profileMenu");
-document.getElementById("profileBtn").onclick = e => { e.stopPropagation(); pm.classList.toggle("open"); };
-document.addEventListener("click", () => pm.classList.remove("open"));
-
-/* ---------- Toast ---------- */
-const toastEl = document.getElementById("toast");
-function toast(msg) {
-  toastEl.textContent = msg; toastEl.classList.add("show");
-  clearTimeout(toastEl._t); toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
-}
-document.addEventListener("click", e => { const t = e.target.closest("[data-toast]"); if (t) toast(t.dataset.toast); });
-
-/* ---------- Generic chip toggles (visual only) ---------- */
-document.querySelectorAll(".chips").forEach(g => g.addEventListener("click", e => {
-  const c = e.target.closest(".chip"); if (!c) return;
-  g.querySelectorAll(".chip").forEach(x => x.classList.toggle("active", x === c));
-}));
-
-/* ---------- Group Finder ---------- */
-const avatarColors = ["#3E7C59","#E8A33D","#7B6BB0","#4F8FB0","#C26A4F"];
-const splits = [
-  { e:"🍚", item:"Jasmine rice, 25 lb", store:"Costco", cat:"staples", pp:4.80, was:11.50, filled:4, total:5, spot:"Oak Hall lobby", when:"Fri 5:00 PM", save:58 },
-  { e:"🍗", item:"Chicken thighs, 6 lb", store:"Costco", cat:"meat", pp:6.00, was:10.00, filled:2, total:4, spot:"Library lot", when:"Sat 11:00 AM", save:40 },
-  { e:"🥚", item:"Eggs, 5 dozen", store:"Sam's Club", cat:"dairy", pp:3.20, was:5.49, filled:3, total:5, spot:"Student Union", when:"Fri 5:00 PM", save:42 },
-  { e:"🥑", item:"Avocados, 6-pack", store:"Aldi", cat:"produce", pp:2.25, was:3.99, filled:1, total:3, spot:"West Village", when:"Thu 7:00 PM", save:44 },
-  { e:"🧀", item:"Shredded cheddar, 5 lb", store:"Costco", cat:"dairy", pp:5.75, was:9.00, filled:2, total:3, spot:"Oak Hall lobby", when:"Sun 2:00 PM", save:36 },
-  { e:"🥩", item:"Ground beef 85/15, 5 lb", store:"Costco", cat:"meat", pp:7.40, was:12.99, filled:3, total:4, spot:"Library lot", when:"Sat 11:00 AM", save:43 },
-  { e:"🍝", item:"Pasta variety, 12 boxes", store:"Aldi", cat:"staples", pp:3.00, was:5.50, filled:5, total:6, spot:"Student Union", when:"Mon 6:00 PM", save:45 },
-  { e:"🥦", item:"Frozen broccoli, 4 lb", store:"Trader Joe's", cat:"produce", pp:2.50, was:4.29, filled:1, total:4, spot:"Oak Hall lobby", when:"Wed 4:00 PM", save:42 },
-  { e:"🫘", item:"Black beans, 12 cans", store:"Costco", cat:"staples", pp:2.70, was:4.80, filled:2, total:4, spot:"West Village", when:"Fri 5:00 PM", save:44 },
-];
-function renderSplits(f = "all") {
-  document.getElementById("splits").innerHTML = splits.filter(s => f === "all" || s.cat === f).map((s, i) => {
-    const left = s.total - s.filled;
-    const av = Array.from({ length: s.filled }, (_, k) => `<span style="background:${avatarColors[(i + k) % 5]}">${"ABCDEFGHJKLMNPRST"[(i*3 + k*5) % 17]}</span>`).join("");
-    return `<div class="card hover split">
-      <div class="split-top"><div class="emo">${s.e}</div><div><h3>${s.item}</h3><div class="from">from ${s.store}</div></div></div>
-      <div class="price"><b>$${s.pp.toFixed(2)}</b><span>/ person</span><span class="badge" style="margin-left:auto">Save ${s.save}%</span></div>
-      <div class="spots"><i style="width:${s.filled / s.total * 100}%"></i></div>
-      <div class="meta">
-        <div><svg class="icon"><use href="#i-users"/></svg><b style="color:var(--forest)">${left} spot${left > 1 ? "s" : ""} left</b>&nbsp;of ${s.total}</div>
-        <div><svg class="icon"><use href="#i-pin"/></svg>${s.spot}</div>
-        <div><svg class="icon"><use href="#i-clock"/></svg>${s.when}</div>
-      </div>
-      <div class="split-foot"><div class="avatars">${av}</div><button class="btn sm" data-toast="Joined ${s.item.split(",")[0]} split (prototype)">Join split</button></div>
-    </div>`;
-  }).join("");
-}
-document.getElementById("gfChips").addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) renderSplits(c.dataset.f); });
-
-/* Modal */
-const modal = document.getElementById("splitModal");
-document.getElementById("openSplit").onclick = () => modal.classList.add("open");
-modal.addEventListener("click", e => { if (e.target === modal || e.target.closest("[data-close]")) modal.classList.remove("open"); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("open"); });
-
-/* ---------- Meal Planner ---------- */
-const days = [["Mon",9],["Tue",10],["Wed",11],["Thu",12],["Fri",13],["Sat",14],["Sun",15]];
-const meals = [["Breakfast","☀️"],["Lunch","🥪"],["Dinner","🌙"]];
-const plan = {
-  "0-0":["🥣","Overnight oats","5 min","c2"], "0-2":["🌯","Chicken burrito bowl","25 min","c1"],
-  "1-0":["🍳","Spinach egg scramble","10 min","c1"], "1-1":["🥗","Leftover burrito bowl","0 min","c4"], "1-2":["🍝","Garlic spinach pasta","20 min","c3"],
-  "2-1":["🥪","Turkey wrap","5 min","c2"], "2-2":["🍛","Chickpea curry","30 min","c5"],
-  "3-0":["🥣","Overnight oats","5 min","c2"], "3-2":["🍗","Sheet-pan chicken","35 min","c1"],
-  "4-1":["🍛","Curry leftovers","0 min","c4"], "4-2":["🍕","Tortilla pizzas","15 min","c3"],
-  "5-0":["🥞","Banana pancakes","15 min","c2"], "5-2":["🌮","Beef tacos","20 min","c5"],
-  "6-1":["🍜","Veggie fried rice","15 min","c1"],
-};
-(function renderCal() {
-  let h = `<div></div>` + days.map(([d, n], i) => `<div class="hd ${i === 1 ? "today" : ""}">${d}<small>Nov ${n}</small></div>`).join("");
-  meals.forEach(([m, e], mi) => {
-    h += `<div class="meal">${e} ${m}</div>`;
-    days.forEach((_, di) => {
-      const r = plan[di + "-" + mi];
-      h += r ? `<div class="slot"><div class="rc ${r[3]}"><span class="e">${r[0]}</span><b>${r[1]}</b><small>⏱ ${r[2]}</small></div></div>`
-             : `<div class="slot empty" title="Add a recipe" data-toast="Recipe picker would open here">+</div>`;
-    });
-  });
-  document.getElementById("cal").innerHTML = h;
-})();
-
-/* ---------- Recipes ---------- */
-const recipeSets = {
-  have: {
-    strip: `<b>In your kitchen:</b> <span class="pill">🍚 Rice</span><span class="pill">🥚 Eggs</span><span class="pill">🥬 Spinach</span><span class="pill">🍗 Chicken</span><span class="pill">🧄 Garlic</span><span class="pill">🍅 Tomatoes</span><a class="btn sm ghost" style="margin-left:auto" href="#">Edit pantry</a>`,
-    list: [
-      ["🍳","Spinach & egg fried rice","15 min","$1.80",["Vegetarian","High protein"],"bg1","Have 5/5"],
-      ["🍝","Garlic spinach pasta","20 min","$2.10",["Vegetarian"],"bg2","Have 4/5"],
-      ["🍗","Lemon garlic chicken","30 min","$3.40",["High protein","Gluten-free"],"bg3","Have 4/6"],
-      ["🍅","Shakshuka","25 min","$2.25",["Vegetarian","Gluten-free"],"bg4","Have 5/6"],
-      ["🥘","Chicken & rice skillet","35 min","$2.90",["High protein"],"bg5","Have 5/7"],
-      ["🥗","Warm spinach salad","10 min","$1.60",["Vegan","Under 20 min"],"bg6","Have 3/4"],
-    ]
-  },
-  recent: {
-    strip: `<b>Bought in the last 7 days:</b> <span class="pill">🥑 Avocados · Mon</span><span class="pill">🧀 Cheddar · Mon</span><span class="pill">🫘 Black beans · Sat</span><span class="pill">🥩 Ground beef · Sat</span>`,
-    list: [
-      ["🌮","Beef & bean tacos","20 min","$2.60",["High protein"],"bg3","Uses 3 recent"],
-      ["🥑","Avocado toast + egg","10 min","$1.90",["Vegetarian","Under 20 min"],"bg6","Uses 1 recent"],
-      ["🧀","Cheesy bean quesadillas","15 min","$1.70",["Vegetarian"],"bg2","Uses 2 recent"],
-      ["🍲","Beef chili","45 min","$2.80",["High protein","Gluten-free"],"bg5","Uses 3 recent"],
-      ["🥙","Burrito bowls","25 min","$2.40",["Gluten-free"],"bg1","Uses 4 recent"],
-    ]
-  },
-  mine: {
-    strip: `<b>Your saved &amp; created recipes</b> <span class="pill">❤️ 4 favorites</span><span class="pill">✍️ 2 created</span>`,
-    list: [
-      ["🥣","Mom's overnight oats","5 min","$0.90",["Vegetarian","Under 20 min"],"bg2","Created by you"],
-      ["🍛","Dorm chickpea curry","30 min","$1.95",["Vegan","Gluten-free"],"bg5","Saved"],
-      ["🍜","Veggie fried rice","15 min","$1.50",["Vegetarian"],"bg1","Saved"],
-      ["🍕","Tortilla pizzas","15 min","$2.00",["Vegetarian"],"bg3","Created by you"],
-      "add"
-    ]
-  }
-};
-function renderRecipes(k) {
-  const s = recipeSets[k];
-  document.getElementById("recStrip").innerHTML = s.strip;
-  document.getElementById("recipes").innerHTML = s.list.map(r => r === "add"
-    ? `<div class="card add-card hover" data-toast="Recipe editor would open here"><div><span class="plus">＋</span>Add your own recipe</div></div>`
-    : `<div class="card hover recipe">
-        <div class="img ${r[5]}">${r[0]}<span class="badge">${r[3]} / serving</span><button class="fav ${k === "mine" ? "on" : ""}" aria-label="Save"><svg class="icon" style="width:18px;height:18px"><use href="#i-heart"/></svg></button></div>
-        <div class="body">
-          <span class="match">${r[6]}</span>
-          <h3>${r[1]}</h3>
-          <div class="info"><span><svg class="icon"><use href="#i-clock"/></svg>${r[2]}</span><span><svg class="icon"><use href="#i-users"/></svg>2 servings</span></div>
-          <div class="tags">${r[4].map(t => `<span class="tag">${t}</span>`).join("")}</div>
-        </div>
-      </div>`).join("");
-}
-document.getElementById("recTabs").addEventListener("click", e => {
-  const b = e.target.closest("button"); if (!b) return;
-  document.querySelectorAll("#recTabs button").forEach(x => x.classList.toggle("active", x === b));
-  renderRecipes(b.dataset.r);
-});
-document.getElementById("recipes").addEventListener("click", e => {
-  const f = e.target.closest(".fav"); if (f) { e.stopPropagation(); f.classList.toggle("on"); }
-});
-
-/* ---------- Stores ---------- */
-const storeSets = {
-  meat: { note: "Ranked by average price per lb across chicken, beef and pork, plus student ratings.", list: [
-    ["Costco","CO","#C0392B",4.6,812,1,"2.1 mi","Membership needed",["Chicken thighs $1.99/lb","Bulk packs"],"Best for splits"],
-    ["Aldi","AL","#1F5FA8",4.4,640,1,"0.8 mi","Open til 9pm",["Ground beef $3.49/lb","Rotating deals"],null],
-    ["Walmart","WM","#2D6CC0",4.0,1033,1,"1.6 mi","Open 24 hrs",["Pork chops $2.79/lb"],null],
-    ["Stop & Shop","SS","#7A3E9D",3.7,402,2,"1.2 mi","Student discount",["Weekly BOGO"],null],
-    ["Whole Foods","WF","#00674B",3.9,288,3,"2.8 mi","Prime deals",["Organic options"],null],
-  ]},
-  produce: { note: "Ranked by freshness ratings, variety and price per pound of common fruits & veggies.", list: [
-    ["Trader Joe's","TJ","#B22222",4.7,920,2,"1.4 mi","Open til 9pm",["Bagged greens","Great frozen veg"],"Student favorite"],
-    ["Aldi","AL","#1F5FA8",4.5,640,1,"0.8 mi","Open til 9pm",["Avocados $0.69","Berries deals"],null],
-    ["Farmers Market","FM","#3E7C59",4.8,214,2,"Campus Green","Saturdays only",["Local & seasonal"],null],
-    ["Whole Foods","WF","#00674B",4.3,288,3,"2.8 mi","Prime deals",["Widest selection"],null],
-    ["Walmart","WM","#2D6CC0",3.5,1033,1,"1.6 mi","Open 24 hrs",["Lowest base prices"],null],
-  ]},
-  staples: { note: "Ranked by price on rice, pasta, beans, oats, flour and cooking oil.", list: [
-    ["Aldi","AL","#1F5FA8",4.8,640,1,"0.8 mi","Open til 9pm",["Pasta $0.85/lb","Oats $2.49"],"Cheapest overall"],
-    ["Costco","CO","#C0392B",4.6,812,1,"2.1 mi","Membership needed",["25 lb rice $19.99"],null],
-    ["Walmart","WM","#2D6CC0",4.2,1033,1,"1.6 mi","Open 24 hrs",["Great Value brand"],null],
-    ["Trader Joe's","TJ","#B22222",4.0,920,2,"1.4 mi","Open til 9pm",["Unique pantry items"],null],
-    ["Target","TG","#CC0000",3.6,507,2,"1.9 mi","Circle deals",["Good & Gather brand"],null],
-  ]},
-};
-const star = on => `<svg viewBox="0 0 24 24" class="${on ? "" : "off"}"><use href="#i-star"/></svg>`;
-function renderStores(k) {
-  const s = storeSets[k];
-  document.getElementById("storeNote").textContent = s.note;
-  document.getElementById("stores").innerHTML = s.list.map((r, i) => `
-    <div class="card hover store">
-      <div class="rank ${i < 3 ? "r" + (i + 1) : ""}">${i + 1}</div>
-      <div class="slogo" style="background:${r[2]}">${r[1]}</div>
-      <div>
-        <h3>${r[0]} ${r[9] ? `<span class="badge">★ ${r[9]}</span>` : ""}</h3>
-        <div class="stars">${[1,2,3,4,5].map(n => star(n <= Math.round(r[3]))).join("")}<b>${r[3].toFixed(1)}</b><small>(${r[4]} reviews)</small></div>
-        <div class="sub"><span><svg class="icon"><use href="#i-pin"/></svg>${r[6]}</span><span><svg class="icon"><use href="#i-clock"/></svg>${r[7]}</span></div>
-        <div class="hl">${r[8].map(t => `<span class="tag">${t}</span>`).join("")}</div>
-      </div>
-      <div class="right">
-        <div class="plevel">${"$".repeat(r[5])}<i>${"$".repeat(3 - r[5])}</i></div>
-        <button class="btn sm ghost" data-toast="Store page would open here">View deals</button>
-      </div>
-    </div>`).join("");
-}
-document.getElementById("storeTabs").addEventListener("click", e => {
-  const b = e.target.closest("button"); if (!b) return;
-  document.querySelectorAll("#storeTabs button").forEach(x => x.classList.toggle("active", x === b));
-  renderStores(b.dataset.s);
-});
-
-/* ---------- Init ---------- */
-renderSplits(); renderRecipes("have"); renderStores("meat"); route();
-</script>
+<script src="js/common.js"></script>
 </body>
 </html>

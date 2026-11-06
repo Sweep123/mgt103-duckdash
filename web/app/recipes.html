@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DuckDash · Recipes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="recipes">
+
+<main>
+<section class="page active">
+  <div class="wrap">
+    <div class="page-head">
+      <div><h1>Recipes</h1><p>Cheap, quick meals that use what you've got.</p></div>
+      <label class="search" style="max-width:320px"><svg class="icon"><use href="#i-search"/></svg><input placeholder="Search recipes…"></label>
+    </div>
+    <div class="rec-bar">
+      <div class="seg" id="recTabs">
+        <button class="active" data-r="have">What I Have</button>
+        <button data-r="recent">Recently Bought</button>
+        <button data-r="mine">My Recipes</button>
+      </div>
+      <div class="chips">
+        <button class="chip active">Any diet</button>
+        <button class="chip">Vegetarian</button>
+        <button class="chip">High protein</button>
+        <button class="chip">Under 20 min</button>
+      </div>
+    </div>
+    <div class="card have-strip" id="recStrip"></div>
+    <div class="recipes" id="recipes"></div>
+  </div>
+</section>
+</main>
+
+<script src="js/common.js"></script>
+<script src="js/recipes.js"></script>
+</body>
+</html>

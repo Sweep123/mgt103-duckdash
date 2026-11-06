@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DuckDash · Meal Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="planner">
+
+<main>
+<section class="page active">
+  <div class="wrap">
+    <div class="page-head">
+      <div><h1>Meal Planner</h1><p>Drag recipes into your week. Your grocery list builds itself.</p></div>
+      <div class="week-nav">
+        <button class="icon-btn" aria-label="Previous week"><svg class="icon"><use href="#i-left"/></svg></button>
+        <span>Nov 9 – 15</span>
+        <button class="icon-btn" aria-label="Next week"><svg class="icon"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+    <div class="mp">
+      <div class="card cal-wrap"><div class="cal" id="cal"></div></div>
+      <div class="side">
+        <div class="card panel">
+          <div class="panel-head"><h3><svg class="icon"><use href="#i-cart"/></svg> Grocery list</h3><a href="#">Share</a></div>
+          <div class="gl-sub">Produce</div>
+          <ul class="glist">
+            <li><input type="checkbox" id="g1"><label for="g1">Bell peppers</label><span class="q">3</span></li>
+            <li><input type="checkbox" id="g2"><label for="g2">Yellow onions</label><span class="q">2</span></li>
+            <li class="done"><input type="checkbox" id="g3" checked><label for="g3">Bananas</label><span class="q">1 bunch</span></li>
+          </ul>
+          <div class="gl-sub">Protein &amp; dairy</div>
+          <ul class="glist">
+            <li><input type="checkbox" id="g4"><label for="g4">Chicken thighs</label><span class="q">2 lb</span></li>
+            <li><input type="checkbox" id="g5"><label for="g5">Greek yogurt</label><span class="q">32 oz</span></li>
+            <li><input type="checkbox" id="g6"><label for="g6">Shredded cheese</label><span class="q">8 oz</span></li>
+          </ul>
+          <div class="gl-sub">Pantry</div>
+          <ul class="glist">
+            <li><input type="checkbox" id="g7"><label for="g7">Black beans</label><span class="q">2 cans</span></li>
+            <li><input type="checkbox" id="g8"><label for="g8">Tortillas</label><span class="q">1 pack</span></li>
+          </ul>
+          <div class="total"><span>Est. total</span><span>$27.40 <span class="badge" style="margin-left:6px">−$9 via splits</span></span></div>
+        </div>
+        <div class="card panel">
+          <div class="panel-head"><h3><svg class="icon" style="color:var(--amber)"><use href="#i-alert"/></svg> Use soon</h3><a href="recipes.html">Find recipes</a></div>
+          <ul class="glist soon">
+            <li><span class="e">🥬</span><div><b>Spinach</b><small>Half bag left</small></div><span class="days r">1 day</span></li>
+            <li><span class="e">🍗</span><div><b>Chicken breast</b><small>From rice &amp; chicken split</small></div><span class="days a">2 days</span></li>
+            <li><span class="e">🥛</span><div><b>Milk</b><small>~2 cups left</small></div><span class="days a">3 days</span></li>
+            <li><span class="e">🍅</span><div><b>Cherry tomatoes</b><small>1 pint</small></div><span class="days g">5 days</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="js/common.js"></script>
+<script src="js/planner.js"></script>
+</body>
+</html>
