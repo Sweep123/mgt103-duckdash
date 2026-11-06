@@ -246,6 +246,7 @@ main { min-height: calc(100vh - 68px - 180px); }
 .week-nav { display: flex; align-items: center; gap: 8px; font-weight: 800; }
 .icon-btn { width: 38px; height: 38px; border-radius: 50%; background: var(--white); display: grid; place-items: center; box-shadow: var(--shadow); transition: transform .18s; }
 .icon-btn:hover { transform: translateY(-1px); background: var(--card); }
+.icon-btn:disabled { opacity: .4; cursor: default; transform: none; }
 .cal-wrap { padding: 16px; overflow-x: auto; }
 .cal { display: grid; grid-template-columns: 92px repeat(7, minmax(112px, 1fr)); gap: 8px; min-width: 900px; }
 .cal .hd { text-align: center; padding: 8px 4px; font-weight: 800; font-size: 14px; }
@@ -376,4 +377,60 @@ footer p { font-size: 14px; max-width: 280px; }
   .row2 { grid-template-columns: 1fr; }
   .section-title { flex-direction: column; gap: 4px; }
   footer .wrap { grid-template-columns: 1fr; }
+}
+
+/* ---------- Meal Planner: 3-day view + calendar popup ---------- */
+.planner-tools { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.range-label { font-weight: 800; min-width: 150px; text-align: center; }
+.cal.cal3 { grid-template-columns: 92px repeat(3, minmax(0, 1fr)); min-width: 0; gap: 10px; }
+.cal3 .slot { min-height: 124px; }
+.cal3 .rc { padding: 12px; gap: 6px; }
+.cal3 .rc .e { font-size: 30px; }
+.cal3 .rc b { font-size: 15px; }
+.cal3 .rc small { font-size: 12px; display: flex; gap: 10px; }
+.cal3 .hd { font-size: 16px; padding: 10px 4px; }
+.cal3 .hd small { font-size: 13px; }
+
+.modal.wide { max-width: 1100px; }
+.cal-toolbar { padding: 16px 24px 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.scroll-x { overflow-x: auto; padding-bottom: 4px; }
+[data-day] { cursor: pointer; }
+.cal .hd[data-day]:not(.today):hover { background: var(--sage); border-radius: 12px; }
+.cal .hd.inrange:not(.today) { box-shadow: inset 0 0 0 2px var(--fresh); border-radius: 12px; }
+#calBody .slot { min-height: 84px; }
+#calBody .slot.empty { font-size: 18px; }
+
+.month { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.month .mh { text-align: center; font-weight: 800; font-size: 13px; color: var(--muted); padding: 4px 0; text-transform: uppercase; letter-spacing: .5px; }
+.mday {
+  background: var(--white); border-radius: 12px; padding: 8px; min-height: 108px; border: 2px solid transparent;
+  display: flex; flex-direction: column; gap: 3px; transition: border-color .18s, transform .18s; min-width: 0;
+}
+.mday:hover { border-color: var(--fresh); transform: translateY(-2px); }
+.mday.inrange { background: var(--sage); }
+.mday.past { opacity: .6; }
+.mday .dn { font-weight: 900; font-size: 14px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 999px; margin-bottom: 2px; }
+.mday.today .dn { background: var(--fresh); color: #fff; }
+.mline { font-size: 11.5px; font-weight: 700; border-radius: 6px; padding: 2px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; font-weight: 700; color: var(--muted); }
+.cal-legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; }
+
+@media (max-width: 640px) {
+  .cal.cal3 { grid-template-columns: 26px repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .cal3 .meal .ml { display: none; }
+  .cal3 .meal { justify-content: center; }
+  .cal3 .rc { padding: 8px; }
+  .cal3 .rc .e { font-size: 24px; }
+  .cal3 .rc b { font-size: 13px; }
+  .cal3 .rc small { flex-direction: column; gap: 0; font-size: 11px; }
+  .cal-wrap { padding: 10px; }
+  .range-label { min-width: 0; flex: 1; }
+  .planner-tools { width: 100%; }
+  .month { gap: 4px; }
+  .mday { min-height: 70px; padding: 4px; align-items: center; }
+  .mline { padding: 1px 2px; font-size: 13px; background: none !important; }
+  .mline .mn { display: none; }
+  .modal-bg { padding: 8px; }
+  .cal-toolbar, .modal-head { padding-left: 16px; padding-right: 16px; }
+  #calBody { padding: 16px; }
 }

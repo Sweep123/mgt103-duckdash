@@ -15,15 +15,19 @@
 <section class="page active">
   <div class="wrap">
     <div class="page-head">
-      <div><h1>Meal Planner</h1><p>Drag recipes into your week. Your grocery list builds itself.</p></div>
-      <div class="week-nav">
-        <button class="icon-btn" aria-label="Previous week"><svg class="icon"><use href="#i-left"/></svg></button>
-        <span>Nov 9 – 15</span>
-        <button class="icon-btn" aria-label="Next week"><svg class="icon"><use href="#i-right"/></svg></button>
+      <div><h1>Meal Planner</h1><p>Drag recipes into your days. Your grocery list builds itself.</p></div>
+      <div class="planner-tools">
+        <div class="week-nav">
+          <button class="icon-btn" id="prevDays" aria-label="Previous 3 days"><svg class="icon"><use href="#i-left"/></svg></button>
+          <span class="range-label" id="rangeLabel"></span>
+          <button class="icon-btn" id="nextDays" aria-label="Next 3 days"><svg class="icon"><use href="#i-right"/></svg></button>
+        </div>
+        <button class="chip" id="todayBtn">Today</button>
+        <button class="btn" id="openCal"><svg class="icon"><use href="#i-cal"/></svg> Calendar view</button>
       </div>
     </div>
     <div class="mp">
-      <div class="card cal-wrap"><div class="cal" id="cal"></div></div>
+      <div class="card cal-wrap"><div class="cal cal3" id="cal"></div></div>
       <div class="side">
         <div class="card panel">
           <div class="panel-head"><h3><svg class="icon"><use href="#i-cart"/></svg> Grocery list</h3><a href="#">Share</a></div>
@@ -60,6 +64,28 @@
   </div>
 </section>
 </main>
+
+<!-- Calendar popup: whole week or 4 weeks -->
+<div class="modal-bg" id="calModal">
+  <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="calTitle">
+    <div class="modal-head">
+      <div><h2 id="calTitle">Calendar</h2><p>Click any day to jump to it in the planner.</p></div>
+      <button class="x" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="cal-toolbar">
+      <div class="seg" id="calMode">
+        <button class="active" data-mode="week">Week</button>
+        <button data-mode="month">4 weeks</button>
+      </div>
+      <div class="week-nav">
+        <button class="icon-btn" id="calPrev" aria-label="Previous"><svg class="icon"><use href="#i-left"/></svg></button>
+        <span class="range-label" id="calLabel"></span>
+        <button class="icon-btn" id="calNext" aria-label="Next"><svg class="icon"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+    <div class="modal-body" id="calBody"></div>
+  </div>
+</div>
 
 <script src="js/common.js"></script>
 <script src="js/planner.js"></script>
