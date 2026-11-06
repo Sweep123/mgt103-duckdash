@@ -4,7 +4,7 @@
     {
       "name": "duckdash",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5173", "--directory", "web/app"],
+      "runtimeArgs": ["-m", "http.server", "5173", "--directory", "web/visuals_test"],
       "port": 5173
     }
   ]
